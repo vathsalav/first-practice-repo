@@ -17,7 +17,7 @@ class CustomerServiceImp(CustomerServiceInterface):
             raise BadName("Last name is too long: It should not be more than 20 characters")
         return self.customer_dao.insert_into_customer_table(customer)
 
-    def service_delete_customer_record_by_id(self, customer_id: int) -> bool:
+    def service_delete_customer_record_by_id(self, customer_id: str) -> bool:
         try:
             return self.customer_dao.delete_from_customer_table_by_id(int(customer_id))
         except ValueError:

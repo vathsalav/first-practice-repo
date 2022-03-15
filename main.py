@@ -13,6 +13,7 @@ app: Flask = Flask(__name__)
 customer_dao = CustomerDAOImp()
 customer_service = CustomerServiceImp(customer_dao)
 
+
 @app.route("/customer", methods=["POST"])
 def create_customer():
     try:
@@ -40,7 +41,7 @@ def create_customer():
 def delete_customer_by_id(customer_id: str):
     try:
         result = customer_service.service_delete_customer_record_by_id(customer_id)
-        result_dictionary = {"result":result}
+        result_dictionary = {"result": result}
         result_json = jsonify(result_dictionary)
         return result_json, 200
     except NothingDeleted as e:
@@ -56,6 +57,5 @@ def delete_customer_by_id(customer_id: str):
         error_json = jsonify(error_message)
         return error_json, 404
 
-    app.run()
 
-
+app.run()
